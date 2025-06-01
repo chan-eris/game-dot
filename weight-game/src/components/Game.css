@@ -1,0 +1,25 @@
+.feedback-message {
+  min-height: 24px; /* Ensure space is reserved for the message */
+  margin: 15px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  text-align: center;
+}
+
+.feedback-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styling for correct/error messages, applied in WeighingScale before, now can be managed here if needed or by inline styles if dynamic */
+.feedback-message.correct {
+  color: green;
+}
+
+.feedback-message.error {
+  color: red;
+}

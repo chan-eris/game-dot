@@ -1,0 +1,52 @@
+.item-shelf-container {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f0f8ff; /* Light alice blue */
+  min-width: 320px; /* Ensure it has some width */
+  max-width: 400px; /* Control max width */
+  margin-left: 20px; /* Space from the scale */
+}
+
+.item-shelf-container h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+}
+
+.items-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* Spacing between items */
+  justify-content: center; /* Center items if they don't fill the row */
+}
+
+.draggable-item {
+  border: 1px solid #007bff; /* Blue border */
+  background-color: #e7f3ff; /* Light blue background */
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  min-width: 80px; /* Ensure items have a decent width */
+}
+
+.draggable-item:hover {
+  background-color: #d0e8ff; /* Slightly darker blue on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.draggable-item .item-name {
+  font-weight: bold;
+  font-size: 0.95em;
+  color: #0056b3; /* Darker blue for name */
+  margin-bottom: 4px;
+}
+
+.draggable-item .item-weight {
+  font-size: 0.85em;
+  color: #333;
+}
