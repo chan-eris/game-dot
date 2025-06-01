@@ -1,13 +1,38 @@
-.feedback-message {
-  min-height: 24px; /* Ensure space is reserved for the message */
-  margin: 15px 0;
-  font-size: 1.1em;
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 960px; /* Max width for the game area */
+  margin: 0 auto; /* Center the game container */
+}
+
+.game-title { /* Already styled in index.css, but can be overridden */
+  margin-bottom: 15px;
+}
+
+.level-indicator {
+  color: var(--kilogram-color); /* Use a theme color */
   font-weight: bold;
-  color: #333;
+  background-color: #e9ecef;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.feedback-message {
+  min-height: 28px; /* Increased min-height */
+  margin: 15px 0 20px 0; /* Adjusted margin */
+  font-size: 1.25em; /* Larger font size */
+  font-weight: bold;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: translateY(-15px); /* Slightly more transform */
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: fit-content; /* Adjust width to content */
+  max-width: 80%; /* Prevent it from being too wide */
 }
 
 .feedback-message.visible {
@@ -15,11 +40,59 @@
   transform: translateY(0);
 }
 
-/* Styling for correct/error messages, applied in WeighingScale before, now can be managed here if needed or by inline styles if dynamic */
 .feedback-message.correct {
-  color: green;
+  color: white; /* Text color for correct message */
+  background-color: var(--feedback-correct-color); /* Green background */
 }
 
 .feedback-message.error {
-  color: red;
+  color: white; /* Text color for error message */
+  background-color: var(--feedback-error-color); /* Red background */
+}
+
+.game-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start; /* Align items to the top */
+  width: 100%;
+  gap: 20px; /* Gap between scale section and item shelf */
+}
+
+.scale-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center buttons below scale */
+  flex-basis: 55%; /* Give more space to the scale section */
+  min-width: 320px; /* Minimum width for the scale section */
+}
+
+.game-buttons {
+  margin-top: 25px; /* Increased margin */
+  display: flex;
+  gap: 15px; /* Space between buttons */
+}
+
+.button-check, .button-reset {
+  padding: 12px 25px;
+  font-size: 1.1em; /* Slightly larger font */
+  border-radius: 20px; /* More rounded corners */
+  font-weight: bold;
+  color: var(--button-primary-text);
+  border: none; /* Remove border if using background color */
+  min-width: 150px; /* Ensure buttons have a good size */
+}
+
+.button-check {
+  background-color: var(--button-primary-bg); /* Amber */
+}
+.button-check:hover {
+  background-color: #ffac00; /* Darker amber */
+}
+
+.button-reset {
+  background-color: var(--button-secondary-bg); /* Gray */
+  color: var(--button-secondary-text);
+}
+.button-reset:hover {
+  background-color: #5a6268; /* Darker gray */
 }

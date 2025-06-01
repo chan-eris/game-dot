@@ -1,11 +1,23 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Child-friendly, legible font */
+  font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* CSS Variables for colors */
+  --primary-bg-color: #f0f8ff; /* Light Alice Blue - for overall background */
+  --text-color: #333;
+  --gram-color: #28a745; /* Green for grams */
+  --kilogram-color: #007bff; /* Blue for kilograms */
+  --button-primary-bg: #ffc107; /* Amber - for main action buttons */
+  --button-primary-text: #333;
+  --button-secondary-bg: #6c757d; /* Gray - for secondary actions */
+  --button-secondary-text: #fff;
+  --feedback-correct-color: var(--gram-color); /* Green for "Correct!" */
+  --feedback-error-color: #dc3545;   /* Red for "Over/Under" */
+  --item-shelf-bg: #e9ecef; /* Light grey for item shelf */
+  --scale-bg: #fff; /* White for scale area */
+  --border-color: #ced4da; /* Standard border color */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +25,75 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column; /* Ensure content flows top to bottom */
+  align-items: center; /* Center content horizontally */
   min-height: 100vh;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  padding-top: 20px; /* Add some space at the top */
 }
 
+/* General h1 styling for game title */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5em; /* Slightly reduced for better fit on smaller screens */
+  line-height: 1.2;
+  color: #0056b3; /* Darker blue for main title */
+  margin-bottom: 20px;
+  text-align: center;
 }
 
+/* General h2 styling for section titles */
+h2 {
+  font-size: 1.8em;
+  color: #343a40; /* Dark gray for section titles */
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* Basic button styling reset/override if needed from Vite's default */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.8em 1.5em; /* Slightly larger padding */
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 500; /* Bolder text */
+  font-family: inherit; /* Use the root font */
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+button:hover {
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+button:active {
+  transform: translateY(0px); /* Press down effect */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Remove default Vite dark mode styles if not desired for this app */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Ensure light mode variables are used if any were different */
+    color: var(--text-color); /* Reaffirm text color for light scheme */
+    background-color: var(--primary-bg-color); /* Reaffirm background for light scheme */
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  /* button { background-color: #f9f9f9; } /* Example of specific light mode button if needed */
+}
+
+/* Utility class for gram unit color */
+.gram-unit {
+  color: var(--gram-color);
+  font-weight: bold;
+}
+
+/* Utility class for kilogram unit color */
+.kilogram-unit {
+  color: var(--kilogram-color);
+  font-weight: bold;
 }

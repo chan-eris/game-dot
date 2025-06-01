@@ -19,11 +19,15 @@ interface WeighingScaleProps {
 const WeighingScale: React.FC<WeighingScaleProps> = ({ targetWeight, currentWeight, itemsOnScale, onAddItemToScale, onRemoveItemFromScale }) => {
   const remainingWeight = Math.max(0, targetWeight - currentWeight);
 
-  const formatWeight = (weight: number) => {
-    if (weight >= 1000) {
-      return `${weight / 1000}kg`;
+  // Updated formatWeight to return JSX for styling units
+  const formatWeight = (weightInGrams: number): JSX.Element => {
+    if (weightInGrams >= 1000) {
+      const kg = weightInGrams / 1000;
+      // Use toFixed to handle potential floating point inaccuracies for display, e.g. 0.75kg from 750g
+      const displayValue = Number.isInteger(kg) ? kg : kg.toFixed(Math.max(1, (kg.toString().split('.')[1] || '').length));
+      return <>{displayValue}<span className="kilogram-unit">kg</span></>;
     }
-    return `${weight}g`;
+    return <>{weightInGrams}<span className="gram-unit">g</span></>;
   };
 
   const [{ isOver, canDrop }, drop] = useDrop(() => ({

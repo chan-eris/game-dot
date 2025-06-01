@@ -1,52 +1,60 @@
 .item-shelf-container {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f0f8ff; /* Light alice blue */
-  min-width: 320px; /* Ensure it has some width */
-  max-width: 400px; /* Control max width */
-  margin-left: 20px; /* Space from the scale */
+  padding: 20px; /* Increased padding */
+  border: 1px solid var(--border-color);
+  border-radius: 10px; /* Slightly more rounded corners */
+  background-color: var(--item-shelf-bg);
+  min-width: 300px; /* Adjusted min-width */
+  max-width: 380px; /* Adjusted max-width */
+  margin-left: 25px; /* Increased margin */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer shadow */
 }
 
 .item-shelf-container h2 {
   text-align: center;
   margin-top: 0;
-  color: #333;
+  margin-bottom: 20px; /* Increased margin */
+  color: var(--text-color); /* Use CSS variable */
+  font-size: 1.6em; /* Adjusted font size */
 }
 
 .items-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px; /* Spacing between items */
-  justify-content: center; /* Center items if they don't fill the row */
+  display: grid; /* Using grid for potentially more complex layouts */
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); /* Responsive columns */
+  gap: 15px; /* Increased gap */
 }
 
 .draggable-item {
-  border: 1px solid #007bff; /* Blue border */
-  background-color: #e7f3ff; /* Light blue background */
-  padding: 10px 15px;
+  border: 1px solid var(--kilogram-color); /* Using theme color */
+  background-color: #fff; /* Brighter background for items */
+  padding: 12px; /* Adjusted padding */
   text-align: center;
   cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* More rounded */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  min-width: 80px; /* Ensure items have a decent width */
 }
 
 .draggable-item:hover {
-  background-color: #d0e8ff; /* Slightly darker blue on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  background-color: #f8f9fa; /* Light hover effect */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transform: translateY(-3px); /* More pronounced lift */
 }
 
 .draggable-item .item-name {
   font-weight: bold;
-  font-size: 0.95em;
-  color: #0056b3; /* Darker blue for name */
-  margin-bottom: 4px;
+  font-size: 1em; /* Increased font size */
+  color: var(--kilogram-color); /* Use theme color */
+  margin-bottom: 5px; /* Adjusted margin */
+  display: block; /* Ensure it takes full width */
 }
 
 .draggable-item .item-weight {
-  font-size: 0.85em;
-  color: #333;
+  font-size: 0.9em; /* Adjusted font size */
+  color: var(--text-color); /* Use theme text color */
+}
+
+/* The .gram-unit class from index.css will color the 'g' */
+.draggable-item .item-weight .gram-unit {
+  font-size: 0.9em; /* Match surrounding text or slightly smaller */
+  margin-left: 1px; /* Small space before unit */
 }

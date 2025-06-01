@@ -80,28 +80,36 @@ const Game: React.FC = () => {
     playSound(SOUND_RESET);
   };
 
+  const feedbackType = feedbackMessage.includes("ピッタリ") || feedbackMessage.includes("クリア") ? 'correct'
+                     : feedbackMessage.includes("オーバー") || feedbackMessage.includes("足りません") || feedbackMessage.includes("乗っています") ? 'error'
+                     : '';
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
-      <h1>Weight Game - Level {currentLevel + 1}</h1>
-      {/* Adding a key to WeighingScale's feedback display part or the message itself for animation reset */}
-      <p key={feedbackKey} className={`feedback-message ${feedbackMessage ? 'visible' : ''}`}>
+    <div className="game-container"> {/* Use class for main container styling */}
+      <h1 className="game-title">Weight Game - <span className="level-indicator">Level {currentLevel + 1}</span></h1>
+      <p
+        key={feedbackKey}
+        className={`feedback-message ${feedbackMessage ? 'visible' : ''} ${feedbackType}`}
+      >
         {feedbackMessage}
       </p>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', maxWidth: '900px' }}> {/* Increased maxWidth slightly */}
-        <div style={{flexBasis: '50%'}}> {/* Assign basis for scale side */}
+      <div className="game-area"> {/* Class for the main game interaction area */}
+        <div className="scale-section"> {/* Class for the weighing scale and its controls */}
           <WeighingScale
             targetWeight={targetWeight}
             currentWeight={currentWeight}
             itemsOnScale={itemsOnScale}
             onAddItemToScale={handleAddItemToScale}
-            onRemoveItemFromScale={handleRemoveItemFromScale} // Pass the new handler
+            onRemoveItemFromScale={handleRemoveItemFromScale}
           />
-          <button onClick={checkWeight} style={{ marginTop: '20px', padding: '12px 25px', fontSize: '18px', cursor: 'pointer' }}>
-            重さをチェック！ (Check Weight)
-          </button>
-          <button onClick={resetCurrentAttempt} style={{ marginTop: '20px', marginLeft: '15px', padding: '12px 25px', fontSize: '18px', cursor: 'pointer' }}>
-            リセット (Reset)
-          </button>
+          <div className="game-buttons">
+            <button onClick={checkWeight} className="button-check">
+              重さをチェック！
+            </button>
+            <button onClick={resetCurrentAttempt} className="button-reset">
+              リセット
+            </button>
+          </div>
         </div>
         <ItemShelf availableItems={availableItems} onItemSelect={handleAddItemToScale} />
       </div>

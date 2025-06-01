@@ -1,58 +1,79 @@
 .weighing-scale-container {
-  min-width: 300px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  min-width: 300px; /* Adjusted min-width */
+  padding: 20px; /* Increased padding */
+  border: 1px solid var(--border-color);
+  border-radius: 10px; /* More rounded */
+  background-color: var(--scale-bg); /* Use theme variable */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer shadow */
 }
 
+.weighing-scale-container h2 {
+  text-align: center; /* Center title */
+  margin-bottom: 20px; /* Increased margin */
+}
+
+/* Styling for Target, Current, Remaining text */
+.weighing-scale-container p {
+  font-size: 1.1em;
+  margin-bottom: 10px; /* Space between p tags */
+  color: var(--text-color);
+}
+.weighing-scale-container p .gram-unit,
+.weighing-scale-container p .kilogram-unit {
+  font-size: 1em; /* Ensure unit font size matches surrounding text */
+  margin-left: 2px;
+}
+
+
 .drop-zone {
-  border: 2px dashed #aaa;
-  padding: 15px;
-  min-height: 180px; /* Slightly increased */
-  background-color: #fff;
-  margin-top: 15px;
-  border-radius: 6px;
+  border: 2px dashed var(--border-color); /* Use theme variable */
+  padding: 20px; /* Increased padding */
+  min-height: 200px; /* Increased min-height */
+  background-color: #f8f9fa; /* Lighter background for drop zone */
+  margin-top: 20px; /* Increased margin */
+  border-radius: 8px; /* More rounded */
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  display: flex; /* For aligning placeholder text if needed */
-  flex-direction: column; /* Stack title and list/placeholder */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center placeholder if no items */
 }
 
 .drop-zone.can-drop {
-  background-color: #e6ffe6; /* Light green when item can be dropped */
-  border-color: #008000; /* Green border */
+  background-color: #e6ffed; /* Lighter green */
+  border-color: var(--gram-color); /* Use theme green */
 }
 
 .drop-zone.is-over {
-  background-color: #c8ffc8; /* Slightly darker green when item is over */
-  border-color: #006400; /* Darker green border */
+  background-color: #d4ffdd; /* Slightly darker green */
+  border-color: #1e7e34; /* Darker theme green */
 }
 
 .drop-zone-placeholder {
-  color: #888;
+  color: #6c757d; /* Grayish color for placeholder */
   text-align: center;
-  margin-top: auto; /* Pushes placeholder down if drop-zone is flex container */
-  margin-bottom: auto; /* Centers placeholder vertically */
+  margin: auto; /* Center placeholder vertically and horizontally */
   font-style: italic;
+  font-size: 1em;
 }
 
 .scale-items-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%; /* Take full width of drop-zone */
 }
 
 .scale-item {
-  background-color: #e0e0e0;
-  border: 1px solid #c0c0c0;
-  color: #333;
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border-radius: 4px;
+  background-color: #ffffff; /* White background for items on scale */
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 10px 15px; /* Increased padding */
+  margin-bottom: 10px; /* Increased margin */
+  border-radius: 6px; /* More rounded */
   font-weight: 500;
   text-align: center;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.07);
 
-  /* Animation for appearing */
   opacity: 0;
   transform: scale(0.9) translateY(10px);
   animation: appear 0.3s ease-out forwards;
@@ -60,12 +81,13 @@
 
 .scale-item.interactive {
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
 }
 
 .scale-item.interactive:hover {
-  background-color: #d3d3d3; /* Slightly darker grey on hover */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #f1f3f5; /* Very light gray on hover */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transform: translateY(-1px) scale(1.02); /* Slight lift and scale effect */
 }
 
 .scale-item:last-child {

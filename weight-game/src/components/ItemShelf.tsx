@@ -30,7 +30,9 @@ const DraggableItem: React.FC<DraggableItemProps> = ({ item, onItemSelect }) => 
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
       <div className="item-name">{item.name}</div>
-      <div className="item-weight">{item.weight}g</div>
+      <div className="item-weight">
+        {item.weight}<span className="gram-unit">g</span>
+      </div>
     </div>
   );
 };
